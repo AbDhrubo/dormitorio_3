@@ -1,6 +1,8 @@
 #include "Resident.h"
 #pragma once
 
+int Resident::res = 0;
+
 //Resident::Resident(string _id, string& _name, string contact, string emerg)
 //{
 //

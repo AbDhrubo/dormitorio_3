@@ -1,13 +1,13 @@
 #include "Student.h"
 
-Student::Student()
+/*Student::Student()
 {
     on_leave = false;
     has_visitor = false;
     wifi_time_limit = 12000;
     late_count = 0;
-}
-Student::Student(string name, int ID, string contact_no, string dept, string emergency_no, string loc, int _year) :resident(name, ID, contact_no, dept, emergency_no, location), year(_year)
+}*/
+Student::Student(int ID, string name, string contact_no, string dept, string emergency_no, Location loc, int _year) :Resident(ID, name, contact_no, dept, emergency_no, loc), year(_year)
 {
     on_leave = false;
     has_visitor = false;
@@ -38,7 +38,7 @@ void Student::late_notifier()
     }
     else
     {
-        cout << not_late << endl;
+        cout << "not_late" << endl;
     }
 }
 int Student::get_year()

@@ -7,7 +7,7 @@
 class Resident : public Person
 {
 public:
-    Resident(int _id, string& _name, string& _contact, string& _emerg) : Person(_id, _name, _contact), emergency_no(_emerg) {
+    Resident(int _id, string& _name, string& _contact, string& _dept, string& _emerg, Location _loc) : Person(_id, _name, _contact), dept(_dept), emergency_no(_emerg), loc(_loc) {
         present = 0;
     }
     void presence_updater();

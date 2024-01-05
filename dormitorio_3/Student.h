@@ -5,12 +5,12 @@
 #include "resident.h"
 
 
-class Student : public resident
+class Student : public Resident
 {
 public:
-    Student();
-    Student(string name, int ID, string contact_no, string dept,
-        string emergency_no, string loc, int _year);
+    //Student();
+    Student(int ID, string name, string contact_no, string dept,
+        string emergency_no, Location loc, int _year);
 
     virtual ~Student();
     void absence_notifier();

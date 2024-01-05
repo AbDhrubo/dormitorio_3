@@ -9,7 +9,7 @@ private:
     T_Position position;
 
 public:
-    Teacher(int i, string n, string cn, string em_cn, T_Position p) :Resident(i, n, cn, em_cn), position(p) {}
+    Teacher(int i, string n, string cn, string em_cn, string _dept, Location loc, T_Position p) :Resident(i, n, cn, em_cn, _dept, loc), position(p) {}
 
     void set_position(T_Position p)
     {
