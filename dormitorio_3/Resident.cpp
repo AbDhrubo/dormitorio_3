@@ -41,7 +41,7 @@ Resident::~Resident()
 }
 void Resident::presence_updater()
 {
-
+    present = present ^ 1;
 }
 
 //Resident::Resident(string _name, int id, string contact, string _dept, string emerg, string loc) :Person(name, ID, Contact_no), dept(_dept), emergency_no(emerg), location(loc)

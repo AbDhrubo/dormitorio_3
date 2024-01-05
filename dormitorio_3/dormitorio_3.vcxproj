@@ -136,6 +136,7 @@
     <ClCompile Include="Resident.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Student.cpp" />
+    <ClCompile Include="students.cpp" />
     <ClCompile Include="Supervisor.cpp" />
     <ClCompile Include="Supplier.cpp" />
     <ClCompile Include="Teacher.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Resident.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Student.h" />
+    <ClInclude Include="students.h" />
     <ClInclude Include="Supervisor.h" />
     <ClInclude Include="Supplier.h" />
     <ClInclude Include="Teacher.h" />

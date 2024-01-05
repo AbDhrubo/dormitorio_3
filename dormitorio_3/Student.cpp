@@ -1,5 +1,7 @@
 #include "Student.h"
-
+int Student::student_count = 0;
+int Student::student_present = 0;
+int Student::st_on_leave = 0;
 /*Student::Student()
 {
     on_leave = false;
@@ -13,6 +15,8 @@ Student::Student(int ID, string name, string contact_no, string dept, string eme
     has_visitor = false;
     wifi_time_limit = 12000;
     late_count = 0;
+    student_count++;
+    student_present++;
 }
 
 Student::~Student()

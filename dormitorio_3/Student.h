@@ -24,10 +24,15 @@ protected:
 
 private:
     int year;
+    static int student_count;
+    static int student_present;
+    static int st_on_leave;
     bool on_leave;
     bool has_visitor;
     int wifi_time_limit;
     int late_count;
 };
+
+
 
 #endif // STUDENT _H
