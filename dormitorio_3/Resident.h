@@ -7,7 +7,7 @@
 class Resident : public Person
 {
 public:
-    Resident(int _id, string& _name, string& _contact, string& _dept, string& _emerg, Location _loc) : Person(_id, _name, _contact), dept(_dept), emergency_no(_emerg), loc(_loc) {
+    Resident(int _id, string& _name, string& _contact, string& _dept, string& _emerg, Location* _loc) : Person(_id, _name, _contact), dept(_dept), emergency_no(_emerg), loc(_loc) {
         present = 0;
     }
     void presence_updater();
@@ -15,9 +15,9 @@ public:
     static void res_count();
     virtual ~Resident();
     string get_emergencyno();
-    Location get_location();
+    Location* get_location();
     string get_dept();
-    void set_location(Location& _loc);
+    void set_location(Location* _loc);
     void set_dept(string& _dept);
     void set_emergencyno(string& number);
     //void show_info() override;
@@ -29,7 +29,7 @@ protected:
     static int res;
     string emergency_no;
     string dept;
-    Location loc;
+    Location *loc;
 };
 
 #endif // Resident_H

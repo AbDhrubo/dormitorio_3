@@ -1,6 +1,6 @@
 #include "students.h"
 void students::add_student(int ID, string name, string contact_no, string dept,
-	string emergency_no, Location loc, int _year) {
+	string emergency_no, Location* loc, int _year) {
 	Student s1(ID, name, contact_no, dept, emergency_no, loc, _year);
 	arr.push_back(s1);
 	//delete &s1;
@@ -36,10 +36,10 @@ void students::student_exit(int ID) {
 	}
 }
 
-Student students::find_student(int ID) {
+Student* students::find_student(int ID) {
 	for (int i = 0; i < arr.size(); i++) {
 		if (ID == arr[i].get_id()) {
-			return arr[i];
+			return &arr[i];
 		}
 	}
 	cout << "Not Found" << endl;

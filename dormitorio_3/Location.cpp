@@ -31,3 +31,11 @@ int Location::get_floorno()
 void Location :: print_Location() {
     cout << "Room: " << room_no << ", Floor: " << floor_no << ", Block: " << block_no << endl;
 }
+
+void Location::update_clean_status() {
+    clean = clean ^ 1;
+}
+
+bool Location::get_clean_status() {
+    return clean;
+}

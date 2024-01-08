@@ -7,7 +7,7 @@ class Supplier :
     public Person
 {
 protected:
-    type ty;
+    type ty; 
 
 public:
     Supplier(int _id, string& _name, string& _cont, type _ty) : Person(_id, _name, _cont), ty(_ty) {}

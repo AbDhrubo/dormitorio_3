@@ -8,7 +8,7 @@ int Resident::res = 0;
 //
 //}
 
-Location Resident::get_location()
+Location* Resident::get_location()
 {
     return loc;
 }
@@ -18,7 +18,7 @@ string Resident::get_dept()
     return dept;
 }
 
-void Resident::set_location(Location& _loc)
+void Resident::set_location(Location* _loc)
 {
     loc = _loc;
 }
