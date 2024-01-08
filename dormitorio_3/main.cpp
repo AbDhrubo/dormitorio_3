@@ -12,6 +12,8 @@
 #include "Teacher.h"
 #include "students.h"
 #include "cooks.h"
+#include "Teachers.h"
+#include "Guards.h"
 
 using namespace std;
 
@@ -31,5 +33,12 @@ int main()
 	c.add_cook(135, "Sad man", "012383", 700, 180, p, m);
 
 	c.find_cook(135).show_info();
-	//c.find_cook(136).show_info();
+	Guards g;
+	g.add_Guard(101, "mama", "0101", 90, 11, 4);
+	g.find_Guard(101).show_info();
+
+	Teachers t;
+	T_Position pi = T_Position::Lecturer;
+	t.add_Teacher(111, "faisal", "01901","CSE", "9820384", loc, pi);
+	t.find_Teacher(111).show_info();
 }
