@@ -74,7 +74,7 @@ start:
 		cout << "Enter Minimum 8 Characters!" << endl;
 		goto start;
 	}
-	ofstream outfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Guard_login.txt", ios::app);
+	ofstream outfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Supervisor_login.txt", ios::app);
 	if (!outfile) {
 		cout << "Error: File Can't Open!" << endl;
 	}
@@ -124,7 +124,10 @@ void Supervisor_login()
 					Sleep(500);
 				}
 				system("cls");
-				cout << "Welcome To This Page!" << endl;
+				cout << "Total students allocated: " << Student::get_total_student_count();
+				cout << "Total students present: " << Student::get_total_student_present();
+				cout << "Total students on leave: " << Student::get_total_student_on_leave();
+				Sleep(5000);
 			}
 		}
 		if (!found) {
@@ -262,8 +265,9 @@ void Guard_login(students &s)
 						cout << "1.Entering Without ID Card" << endl
 							<< "2.Exiting Without ID Card" << endl
 							<< "3.Going On Leave" << endl
-							<< "4.Is Late" << endl
-							<< "5.Back" << endl;
+							<< "4.Returning From Leave: " << endl
+							<< "5.Is Late" << endl
+							<< "6.Back" << endl;
 						cout << "Enter choice: " << endl;
 						cin >> val;
 						if (val == 1)
@@ -286,11 +290,17 @@ void Guard_login(students &s)
 						}
 						else if (val == 4)
 						{
-							s.find_student(id)->increment_late_count();
+							s.find_student(id)->set_on_leave(false);
 							cout << "Update Successful!";
 							Sleep(2000);
 						}
 						else if (val == 5)
+						{
+							s.find_student(id)->increment_late_count();
+							cout << "Update Successful!";
+							Sleep(2000);
+						}
+						else if (val == 6)
 						{
 							Sleep(200);
 						}
@@ -381,7 +391,7 @@ int main()
 		else if (val == 2) {
 			system("cls");
 			exit = true;
-			cout << "Good Luck!" << endl;
+			cout << "Have a good day!" << endl;
 			Sleep(2000);
 		}
 		Sleep(2000);

@@ -26,9 +26,34 @@ public:
     void set_wifi_time_limit(int w);
     void increment_late_count();
     void show_info() override;
-    static int get_total_student_count;
-    static int get_total_student_present;
-    static int get_total_student_on_leave;
+
+    static int get_total_student_count()
+    {
+        return student_count;
+    }
+    static void update_total_student_count(int i)
+    {
+        if (i) student_count++;
+        else student_count--;
+    }
+    static int get_total_student_present()
+    {
+        return student_present;
+    }
+    static void update_total_student_present(int i)
+    {
+        if (i) student_present++;
+        else student_present--;
+    }
+    static int get_total_student_on_leave()
+    {
+        return student_on_leave;
+    }
+    static void update_total_student_on_leave(int i)
+    {
+        if (i) student_on_leave++;
+        else student_on_leave--;
+    }
 
 protected:
 
@@ -36,11 +61,12 @@ private:
     int year;
     bool on_leave;
     bool has_visitor;
+    bool meet_notification;
     int wifi_time_limit;
     int late_count;
     static int student_count;
     static int student_present;
-    static int st_on_leave;
+    static int student_on_leave;
 };
 
 
