@@ -14,6 +14,13 @@
 #include "cooks.h"
 #include "Teachers.h"
 #include "Guards.h"
+#include "Suppliers.h"
+#include "Cleaners.h"
+
+
+
+
+
 
 using namespace std;
 
@@ -41,4 +48,14 @@ int main()
 	T_Position pi = T_Position::Lecturer;
 	t.add_Teacher(111, "faisal", "01901","CSE", "9820384", loc, pi);
 	t.find_Teacher(111).show_info();
+
+	Suppliers sl;
+	type t1= type::carpenter;
+	sl.add_supplier(101, "mama1", "0101", t1);
+	sl.find_supplier(101).show_info();
+
+	Cleaners c1;
+	Block b1 = Block::HB1;
+	c1.add_cleaner(110, "mama2", "01010", 4, 5, 6, b1);
+	c1.find_cleaner(110).show_info();
 }

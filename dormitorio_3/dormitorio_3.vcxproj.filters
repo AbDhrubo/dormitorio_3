@@ -63,6 +63,12 @@
     <ClCompile Include="Guards.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cleaners.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Suppliers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
@@ -111,6 +117,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Guards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cleaners.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Suppliers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
