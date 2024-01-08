@@ -24,8 +24,9 @@ void Cook::show_info()
     cout << "ID: " << id << endl
         << "Name: " << name << endl
         << "Contact No: +88" << cont_no << endl
-        << "Duty Time: " << duty_time / 100 << ":" << duty_time % 100 << endl
-        << "Duration: " << duration << " minutes" << endl
+        << "Duty Time: ";
+        show_time();
+        cout << "Duration: " << duration << " minutes" << endl
         << "Position: " << get_position() << " Cook" << endl
         << "Meal: " << get_meal() << endl << endl;
 }

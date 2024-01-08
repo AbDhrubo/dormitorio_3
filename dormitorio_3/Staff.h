@@ -6,6 +6,7 @@ protected:
     int duty_time;
     int duration;
     bool on_duty = false;
+    bool hall_presence = false;
 
 public:
     Staff(int i, string n, string cn, int t, int d) :Person(i, n, cn), duty_time(t), duration(d) {}
@@ -33,5 +34,21 @@ public:
     bool get_on_duty()
     {
         return on_duty;
+    }
+    void presence_updater()
+    {
+        if (hall_presence) hall_presence = false;
+        else hall_presence = true;
+    }
+
+    void show_time()
+    {
+        int hour, min;
+        hour = duty_time / 100;
+        min = duty_time % 100;
+        if (hour < 10) cout << "0";
+        cout << hour << ":";
+        if (min < 10) cout << "0";
+        cout << min << endl;
     }
 };

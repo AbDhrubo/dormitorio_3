@@ -18,4 +18,14 @@ public:
         return surv_hour;
     }
     void show_info() override;
+    void show_survey_time()
+    {
+        int hour, min;
+        hour = surv_hour / 100;
+        min = surv_hour % 100;
+        if (hour < 10) cout << "0";
+        cout << hour << ":";
+        if (min < 10) cout << "0";
+        cout << min << endl;
+    }
 };

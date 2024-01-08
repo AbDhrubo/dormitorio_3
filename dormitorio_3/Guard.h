@@ -16,13 +16,6 @@ public:
     {
         return gate_no;
     }
-    void show_info() 
-    {
-        cout << "ID: " << get_id() << endl
-            << "Name: " << get_name() << endl
-            << "Contact No: +88" << get_cont() << endl
-            << "Duty Time: " << duty_time / 100 << ":" << duty_time % 100 << endl
-            << "Duration: " << duration << " minutes" << endl
-            << "Gate No: " << gate_no << endl << endl;
-    }
+    void show_info();
+   
 };
