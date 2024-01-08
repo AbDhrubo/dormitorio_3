@@ -59,4 +59,12 @@ void Student::show_info() {
     cout << "ID: " << get_id() << endl;
     cout << "Name: " << get_name() << endl;
     cout << "Contact no: " << get_cont() << endl;
+    cout << "Emergency Contact: " << get_emergencyno() << endl;
+    get_location().print_Location();
+    cout << "Year: " << get_year() << endl;
+    cout << "Presence: ";
+    if (present) cout << "Yes";
+    else cout << "No";
+    cout << endl;
+    cout << endl;
 }

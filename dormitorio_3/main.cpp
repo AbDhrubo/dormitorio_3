@@ -16,9 +16,11 @@ using namespace std;
 
 int main() 
 {
-	//cout << "cool project" << endl;
-	/*students s;*/
-	//Location loc(4, 5, 6);
-	//s.add_student(137, "dhrubo", "010011", "CSE", "02020", loc, 2);
-	//s.find_student(137).show_info();
+	cout << "cool project" << endl;
+	students s;
+	Location loc(4, 5, 6);
+	
+	s.add_student(137, "dhrubo", "010011", "CSE", "02020", loc, 2);
+	
+    s.find_student(137).show_info();
 }

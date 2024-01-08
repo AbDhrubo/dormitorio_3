@@ -3,7 +3,7 @@ void students::add_student(int ID, string name, string contact_no, string dept,
 	string emergency_no, Location loc, int _year) {
 	Student s1(ID, name, contact_no, dept, emergency_no, loc, _year);
 	arr.push_back(s1);
-	delete &s1;
+	//delete &s1;
 }
 
 int students::remove_student(int ID) {

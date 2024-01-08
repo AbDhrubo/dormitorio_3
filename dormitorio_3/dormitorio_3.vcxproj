@@ -148,12 +148,17 @@
     <ClInclude Include="Location.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Resident.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="students.h" />
     <ClInclude Include="Supervisor.h" />
     <ClInclude Include="Supplier.h" />
     <ClInclude Include="Teacher.h" />
+    <ClInclude Include="Teachers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="dormitorio_3.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
