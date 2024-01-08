@@ -144,6 +144,7 @@
     <ClCompile Include="Supplier.cpp" />
     <ClCompile Include="Suppliers.cpp" />
     <ClCompile Include="Teacher.cpp" />
+    <ClCompile Include="Teachers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cleaner.h" />
