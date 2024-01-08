@@ -124,9 +124,9 @@ void Supervisor_login()
 					Sleep(500);
 				}
 				system("cls");
-				cout << "Total students allocated: " << Student::get_total_student_count();
-				cout << "Total students present: " << Student::get_total_student_present();
-				cout << "Total students on leave: " << Student::get_total_student_on_leave();
+				cout << "Total students allocated: " << Student::get_total_student_count() << endl;
+				cout << "Total students present: " << Student::get_total_student_present() << endl;
+				cout << "Total students on leave: " << Student::get_total_student_on_leave() << endl;
 				Sleep(5000);
 			}
 		}
@@ -173,31 +173,50 @@ void Resident_login(students &s)
 					cout << ".";
 					Sleep(500);
 				}
-				int val;
+				int id;
 				cout << endl << "Enter your ID: ";
-				cin >> val;
-				Student* logged = s.find_student(val);
-				cout << "Your ";
-				logged->get_location()->print_Location();
-				cout << "Do you want to update room clean status?" << endl
-					<< "1.Yes" << endl
-					<< "2.No" << endl;
-				cin >> val;
-				if (val == 1)
+				cin >> id;
+				Student* logged = s.find_student(id);
+				
+				bool exit = false;
+				while (!exit)
 				{
 					system("cls");
-					logged->get_location()->update_clean_status();
-					cout << "Update Successful!" << endl
-						 << "Status: ";
-					if (logged->get_location()->get_clean_status()) cout << "Cleaned" << endl;
-					else cout << "To be cleaned" << endl;
-					Sleep(10000);
-				}
-				else if (val == 2)
-				{
-					system("cls");
-					cout << "Have a good day!" << endl;
-					Sleep(2000);
+					int val;
+					if (logged->get_meet_notification()) cout << "*** Reminder:  You Are Expected At Supervisor's Office ***" << endl << endl;
+					cout << "1.View Your Information" << endl
+						<< "2.Update Cleaning Status" << endl
+						<< "3.Exit" << endl
+						<< "4.Update Password: " << endl
+						<< "Enter Choice: ";
+					cin >> val;
+
+					if (val == 1)
+					{
+						system("cls");
+						int x;
+						logged->show_info();
+						cout << "Press 0 to go back: ";
+						cin >> x;
+						if (x == 0) Sleep(200);
+
+					}
+					else if (val == 2)
+					{
+						system("cls");
+						logged->get_location()->update_clean_status();
+						cout << "Update Successful!" << endl
+							<< "Status: ";
+						if (logged->get_location()->get_clean_status()) cout << "Cleaned" << endl;
+						else cout << "To be cleaned" << endl;
+						Sleep(2000);
+					}
+					else if (val == 3)
+					{
+						system("cls");
+						exit = true;
+						cout << "Have a good day!" << endl;
+					}
 				}
 
 			}
@@ -254,13 +273,13 @@ void Guard_login(students &s)
 					cout << "1.Update Student Info" << endl;
 					cout << "2.View Student Info" << endl;
 					cout << "3.Exit" << endl;
-					cout << "Enter choice: " << endl;
+					cout << "Enter choice: ";
 					cin >> val;
 					if (val == 1)
 					{
 						system("cls");
 						int id, val;
-						cout << "Enter Student ID:" << endl;
+						cout << "Enter Student ID:";
 						cin >> id;
 						cout << "1.Entering Without ID Card" << endl
 							<< "2.Exiting Without ID Card" << endl
@@ -268,7 +287,7 @@ void Guard_login(students &s)
 							<< "4.Returning From Leave: " << endl
 							<< "5.Is Late" << endl
 							<< "6.Back" << endl;
-						cout << "Enter choice: " << endl;
+						cout << "Enter choice: ";
 						cin >> val;
 						if (val == 1)
 						{
@@ -309,7 +328,7 @@ void Guard_login(students &s)
 					{
 						system("cls");
 						int id, val;
-						cout << "Enter Student ID:" << endl;
+						cout << "Enter Student ID:";
 						cin >> id;
 						s.find_student(id)->show_info();
 						cout << "Press 0 to go back: ";
@@ -318,9 +337,9 @@ void Guard_login(students &s)
 					}
 					else if (val == 3)
 					{
+						system("cls");
 						exit = true;
 						cout << "Have a good day!";
-						Sleep(1000);
 					}
 				}
 			}

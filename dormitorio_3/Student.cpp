@@ -2,13 +2,7 @@
 int Student::student_count = 0;
 int Student::student_present = 0;
 int Student::student_on_leave = 0;
-/*Student::Student()
-{
-    on_leave = false;
-    has_visitor = false;
-    wifi_time_limit = 12000;
-    late_count = 0;
-}*/
+
 Student::Student(int ID, string name, string contact_no, string dept, string emergency_no, Location* loc, int _year) :Resident(ID, name, contact_no, dept, emergency_no, loc), year(_year)
 {
     on_leave = false;
@@ -69,6 +63,11 @@ int Student::get_late_count()
     return late_count;
 }
 
+bool Student::get_meet_notification()
+{
+    return meet_notification;
+}
+
 void Student::set_year(int y)
 {
     year = y;
@@ -104,7 +103,13 @@ void Student::set_wifi_time_limit(int w)
 void Student::increment_late_count()
 {
     late_count++;
-    if (late_count >= 5) meet_notification = true;
+    if (late_count >= 3) meet_notification = true;
+}
+
+void Student::set_meet_notification(int m)
+{
+    if (m) meet_notification = true;
+    else meet_notification = false;
 }
 
 void Student::show_info() {
@@ -127,6 +132,6 @@ void Student::show_info() {
     cout << "Call From Supervisor: ";
     if (meet_notification) cout << "Yes" << endl;
     else cout << "No" << endl;
-    cout << endl;
+    cout << "Late: " << late_count << " times" << endl << endl;
 }
 

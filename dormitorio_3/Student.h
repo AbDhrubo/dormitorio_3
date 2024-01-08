@@ -20,11 +20,13 @@ public:
     bool get_has_visitor();
     int get_wifi_time_limit();
     int get_late_count();
+    bool get_meet_notification();
     void set_year(int y);
     void set_on_leave(bool b);
     void set_has_visitor(bool b);
     void set_wifi_time_limit(int w);
     void increment_late_count();
+    void set_meet_notification(int m);
     void show_info() override;
 
     static int get_total_student_count()
