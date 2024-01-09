@@ -11,9 +11,13 @@ public:
     int get_roomno();
     int get_blockno();
     int get_floorno();
+    int get_count();
     void update_clean_status();
     bool get_clean_status();
     void print_Location();
+    void print_Location_info();
+    void set_clean_status(int i);
+    void set_count(int i);
     virtual ~Location();
 
 protected:
@@ -23,6 +27,7 @@ private:
     int block_no;
     int floor_no;
     bool clean = false;
+    int count = 0;
 };
 
 #endif // Location_H

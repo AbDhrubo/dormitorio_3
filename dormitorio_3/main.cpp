@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <fstream>
 #include <windows.h>
 #include <sstream>
@@ -28,6 +29,8 @@ using namespace std;
 
 	return 0;
 }*/
+void update_location_file(vector <Location>& locco);
+void update_students_file(students &s, vector <Location>& locco);
 
 class Login 
 {
@@ -138,7 +141,7 @@ void Supervisor_login()
 	Sleep(1000);
 }
 
-void Resident_login(students &s)
+void Resident_login(students &s, vector <Location> &locco)
 {
 	system("cls");
 	hash <string> hasher;
@@ -204,10 +207,11 @@ void Resident_login(students &s)
 					else if (val == 2)
 					{
 						system("cls");
-						logged->get_location()->update_clean_status();
+						locco[logged->get_location()].update_clean_status();
+						update_location_file(locco);
 						cout << "Update Successful!" << endl
 							<< "Status: ";
-						if (logged->get_location()->get_clean_status()) cout << "Cleaned" << endl;
+						if (locco[logged->get_location()].get_clean_status()) cout << "Cleaned" << endl;
 						else cout << "To be cleaned" << endl;
 						Sleep(2000);
 					}
@@ -229,7 +233,7 @@ void Resident_login(students &s)
 	Sleep(1000);
 }
 
-void Guard_login(students &s)
+void Guard_login(students &s, vector <Location> &locco)
 {
 	system("cls");
 	hash <string> hasher;
@@ -284,7 +288,7 @@ void Guard_login(students &s)
 						cout << "1.Entering Without ID Card" << endl
 							<< "2.Exiting Without ID Card" << endl
 							<< "3.Going On Leave" << endl
-							<< "4.Returning From Leave: " << endl
+							<< "4.Returning From Leave" << endl
 							<< "5.Is Late" << endl
 							<< "6.Back" << endl;
 						cout << "Enter choice: ";
@@ -292,30 +296,35 @@ void Guard_login(students &s)
 						if (val == 1)
 						{
 							s.student_entry(id);
+							update_students_file(s, locco);
 							cout << "Update Successful!";
 							Sleep(2000);
 						}
 						else if (val == 2)
 						{
 							s.student_exit(id);
+							update_students_file(s, locco);
 							cout << "Update Successful!";
 							Sleep(2000);
 						}
 						else if (val == 3)
 						{
 							s.find_student(id)->set_on_leave(true);
+							update_students_file(s, locco);
 							cout << "Update Successful!";
 							Sleep(2000);
 						}
 						else if (val == 4)
 						{
 							s.find_student(id)->set_on_leave(false);
+							update_students_file(s, locco);
 							cout << "Update Successful!";
 							Sleep(2000);
 						}
 						else if (val == 5)
 						{
 							s.find_student(id)->increment_late_count();
+							update_students_file(s, locco);
 							cout << "Update Successful!";
 							Sleep(2000);
 						}
@@ -330,7 +339,7 @@ void Guard_login(students &s)
 						int id, val;
 						cout << "Enter Student ID:";
 						cin >> id;
-						s.find_student(id)->show_info();
+						s.find_student(id)->show_student_info(locco);
 						cout << "Press 0 to go back: ";
 						cin >> val;
 						Sleep(100);
@@ -352,7 +361,7 @@ void Guard_login(students &s)
 	Sleep(1000);
 }
 
-void login(students &s)
+void login(students &s, vector<Location> &locco)
 {
 	system("cls");
 	int val;
@@ -362,19 +371,182 @@ void login(students &s)
 	cout << "Enter choice: ";
 	cin >> val;
 	if (val == 1) Supervisor_login();
-	else if (val == 2) Resident_login(s);
-	else if (val == 3) Guard_login(s);
+	else if (val == 2) Resident_login(s, locco);
+	else if (val == 3) Guard_login(s, locco);
 
 }
 
+void write_students_file()
+{
+	int stu_id, stu_year, stu_loc;
+	string stu_name, stu_cont, stu_dept, stu_emg;
+	cout << "Enter id: ";
+	cin >> stu_id;
+	cout << "Enter name: ";
+	cin >> stu_name;
+	cout << "Enter semester: ";
+	cin >> stu_year;
+	cout << "Enter dept: ";
+	cin >> stu_dept;
+	cout << "Enter contact: ";
+	cin >> stu_cont;
+	cout << "Enter emg contact: ";
+	cin >> stu_emg;
+	cout << "Enter location: ";
+	cin >> stu_loc;
+
+	ofstream outfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Students.txt", ios::app);
+	if (!outfile) {
+		cout << "Error: File Can't Open!" << endl;
+	}
+	else {
+		outfile
+			<< stu_id << " : "
+			<< stu_name << " : "
+			<< stu_cont << " : "
+			<< stu_dept << " : "
+			<< stu_emg << " : "
+			<< stu_loc << " : "
+			<< stu_year << endl;
+	}
+	cout << "Entry done!" << endl;
+	outfile.close();
+}
+
+
+//Location ****read,write,update**** file
+void read_location_file(vector <Location> &locco)
+{
+	ifstream infile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Location.txt", ios::in);
+	if (!infile) 
+	{
+		cout << "Error: File Can't Open!" << endl;
+	}
+	else 
+	{
+			string line;
+			while (getline(infile, line)) 
+			{
+				stringstream ss;
+				ss << line;
+				int loc_block, loc_floor, loc_room, loc_clean, loc_count;
+				char delimiter;
+				ss >> loc_block >> delimiter >> loc_floor >> delimiter >> loc_room >> delimiter >> loc_clean >> delimiter >> loc_count;
+				Location locoloco(loc_room, loc_block, loc_floor);
+				locoloco.set_clean_status(loc_clean);
+
+				locco.push_back(locoloco);
+
+			}
+	}
+	infile.close();
+}
+
+void write_location_file()
+{
+	ofstream outfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Location.txt", ios::app);
+	if (!outfile)
+	{
+		cout << "Error: File Can't Open!" << endl;
+	}
+	else 
+	{
+		for (int i = 1; i <= 2; i++)
+		{
+			for (int j = 1; j <= 4; j++)
+			{
+				for (int k = 1; k <= 3; k++)
+				{
+					outfile << i << " : " << j << " : " << k << " : " << 0 << " : " << 0 << endl;
+				}
+			}
+		}
+	}
+}
+
+void update_location_file(vector <Location> &locco)
+{
+	ofstream clearfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Location.txt", ios::out);
+	clearfile << "";
+	clearfile.close();
+
+	ofstream outfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Location.txt", ios::app);
+	{
+		for (int i = 0; i < locco.size(); i++)
+		{
+			outfile << locco[i].get_blockno() << " : " << locco[i].get_floorno() << " : " << locco[i].get_roomno() << " : " << locco[i].get_clean_status() << " : " << locco[i].get_count() << endl;
+		}
+	}
+	outfile.close();
+
+}
+
+void read_students_file(students& s)
+{
+	int stu_id, stu_year, stu_loc, stu_late, stu_on_leave, stu_visitor, stu_meet, stu_present;
+	string stu_name, stu_cont, stu_dept, stu_emg;
+
+	ifstream infile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Students.txt");
+	if (!infile)
+	{
+		cout << "Error: File Can't Open!" << endl;
+	}
+	else
+	{
+		string line;
+		while (getline(infile, line))
+		{
+			stringstream ss;
+			ss << line;
+			char delimiter;
+			ss >> stu_id >> delimiter >> stu_name >> delimiter >> stu_cont >> delimiter >> stu_dept >> delimiter >> stu_emg >> delimiter >> stu_loc >> delimiter >> stu_year
+				>>  delimiter >> stu_late >> delimiter >> stu_meet >> delimiter >> stu_on_leave >> delimiter >> stu_visitor >> delimiter >> stu_present;
+
+			s.add_student(stu_id, stu_name, stu_cont, stu_dept, stu_emg, stu_loc, stu_year, stu_late, stu_meet, stu_on_leave, stu_visitor, stu_present);
+		}
+	}
+}
+
+void update_students_file(students &s, vector <Location> &locco)
+{
+	ofstream clearfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Students.txt", ios::out);
+	clearfile << "";
+	clearfile.close();
+
+	ofstream outfile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Students.txt", ios::app);
+	{
+		for (int i = 0; i < 50; i++)
+		{
+			outfile << s[i].get_id() << " : "
+				<< s[i].get_name() << " : "
+				<< s[i].get_cont() << " : "
+				<< s[i].get_dept() << " : "
+				<< s[i].get_emergencyno() << " : "
+				<< s[i].get_location() << " : "
+				<< s[i].get_year() << " : "
+				<< s[i].get_late_count() << " : "
+				<< s[i].get_meet_notification() << " : "
+				<< s[i].get_on_leave() << " : "
+				<< s[i].get_has_visitor() << " : "
+				<< s[i].get_presence() << endl;
+		}
+	}
+	outfile.close();
+
+}
+
+
 int main() 
 {
-	cout << "------------Dormitorio------------" << endl;
 	students s;
-	Location loc(4, 5, 6);
-	s.add_student(137, "Dhrubo", "01552393972", "CSE", "01793597139", &loc, 2);
-	Location locc(3, 2, 1);
-	s.add_student(125, "Sreya", "01711150081", "EEE", "01824203131", &locc, 3);
+	vector <Location> locco;
+
+	read_location_file(locco);
+	read_students_file(s);
+
+	/*locco[1].set_clean_status(1);
+	locco[3].set_count(3);
+	update_location_file(locco);
 
 	cooks c;
 	Position p = Position::Head;
@@ -383,8 +555,8 @@ int main()
 
 	//c.find_cook(135).show_info();
 	//c.find_cook(136).show_info();
-	Sleep(10000);
-
+	//Sleep(10000);
+	*/
 	Login log;
 
 	bool exit = false;
@@ -404,7 +576,7 @@ int main()
 		}
 
 		if (val == 1) {
-			login(s);
+			login(s, locco);
 		}
 
 		else if (val == 2) {
@@ -415,4 +587,62 @@ int main()
 		}
 		Sleep(2000);
 	}
+
+	/*Location a(1, 2, 3), b(1, 4, 5), c(2, 2, 2), d(2, 1, 5);
+	vector <Location> loco;
+	loco.push_back(a);
+	loco.push_back(b);
+	loco.push_back(c);
+	loco.push_back(d);
+	for (int i = 0; i < loco.size(); i++)
+	{
+		write_students_file(&loco[i]);
+	}*/
+
+	/*write_location_file();
+	vector <Location> locco;
+	read_location_file(locco);
+
+	locco[1].set_clean_status(1);
+	locco[3].set_count(3);
+	update_location_file(locco);
+
+	for (int i = 0; i < locco.size(); i++)
+	{
+		locco[i].print_Location_info();
+	}*/
+	//for(int i=1; i<=10; i++) write_students_file();
+	//write_location_file();
+	
+	for (int i = 0; i < 50; i++)
+	{
+		s.show_info(i, locco);
+	}
 }
+
+/*void read_students_file(students& s)
+{
+	int stu_id, stu_year, stu_loc;
+	string stu_name, stu_cont, stu_dept, stu_emg;
+
+	ifstream infile("D:/CSE 2-1/OOPPSSSS/dormitorio_3/Students.txt");
+	if (!infile)
+	{
+		cout << "Error: File Can't Open!" << endl;
+	}
+	else
+	{
+		string line;
+		while (getline(infile, line)) 
+		{
+			stringstream ss;
+			ss << line;
+			char delimiter;
+			ss >> stu_id >> delimiter >> stu_name >> delimiter >> stu_cont >> delimiter >> stu_dept >> delimiter >> stu_emg >> delimiter >> stu_loc >> delimiter >> stu_year;
+
+			s.add_student(stu_id, stu_name, stu_cont, stu_dept, stu_emg, stu_loc, stu_year);
+		}
+	}
+}*/
+
+

@@ -3,8 +3,7 @@
 
 enum type{electrician, carpenter, plumber, food};
 
-class Supplier :
-    public Person
+class Supplier : public Person
 {
 protected:
     type ty; 
@@ -14,7 +13,7 @@ public:
     void call() {
         cout << "Hello" << endl;
     }
-   /* void set_id(int _id) {
+    void set_id(int _id) {
         id = _id;
     }
     int get_id() {
@@ -25,7 +24,7 @@ public:
     }
     string get_name() {
         return name;
-    }*/
+    }
 
     void set_type(type _ty) {
         ty = _ty;

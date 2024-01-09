@@ -10,7 +10,7 @@ private:
 public:
 	/*students() {
 	}*/
-	void add_Teacher(int i, string n, string cn, string em_cn, string _dept, Location* loc, T_Position p);
+	void add_Teacher(int i, string n, string cn, string em_cn, string _dept, int loc, T_Position p);
 	int remove_Teacher(int ID);
 	int Teacher_entry(int ID);
 	void Teacher_exit(int ID);

@@ -3,6 +3,7 @@
 #define STUDENT _H
 
 #include "resident.h"
+#include <vector>
 
 
 class Student : public Resident
@@ -10,7 +11,7 @@ class Student : public Resident
 public:
     //Student();
     Student(int ID, string name, string contact_no, string dept,
-        string emergency_no, Location* loc, int _year);
+        string emergency_no, int loc, int _year);
 
     virtual ~Student();
     void absence_notifier();
@@ -25,8 +26,10 @@ public:
     void set_on_leave(bool b);
     void set_has_visitor(bool b);
     void set_wifi_time_limit(int w);
+    void set_late_count(int l);
     void increment_late_count();
     void set_meet_notification(int m);
+    void show_student_info(vector <Location>& locco);
     void show_info() override;
 
     static int get_total_student_count()

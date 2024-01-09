@@ -28,8 +28,19 @@ int Location::get_floorno()
     return floor_no;
 }
 
+int Location::get_count()
+{
+    return count;
+}
+
 void Location :: print_Location() {
-    cout << "Room: " << room_no << ", Floor: " << floor_no << ", Block: " << block_no << endl;
+    cout << "Room: " << floor_no << 0 << room_no << ", Floor: " << floor_no << ", Block: " << block_no << endl;
+}
+
+void Location::print_Location_info()
+{
+    cout << "Status: " << clean << "Total Resident: " << count << " ";
+    print_Location();
 }
 
 void Location::update_clean_status() {
@@ -38,4 +49,15 @@ void Location::update_clean_status() {
 
 bool Location::get_clean_status() {
     return clean;
+}
+
+void Location::set_clean_status(int i)
+{
+    if (i) clean = true;
+    else clean = false;
+}
+
+void Location::set_count(int i)
+{
+    count = i;
 }

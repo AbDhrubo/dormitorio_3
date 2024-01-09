@@ -1,10 +1,14 @@
 #include "students.h"
 void students::add_student(int ID, string name, string contact_no, string dept,
-	string emergency_no, Location* loc, int _year) {
+	string emergency_no, int loc, int _year, int late, bool meet, bool on_leave, bool visitor, int present) {
 	Student s1(ID, name, contact_no, dept, emergency_no, loc, _year);
+	s1.set_late_count(late);
+	s1.set_meet_notification(meet);
+	s1.set_on_leave(on_leave);
+	s1.set_has_visitor(visitor);
+	s1.set_presence(present);
 	arr.push_back(s1);
 	Student::update_total_student_count(1);
-	//delete &s1;
 }
 
 int students::remove_student(int ID) {
@@ -51,4 +55,10 @@ Student* students::find_student(int ID) {
 		}
 	}
 	cout << "Not Found" << endl;
+}
+
+void students::show_info(int i, vector <Location> &locco)
+{
+	cout << "Index :" << i << endl;
+	arr[i].show_student_info(locco);
 }

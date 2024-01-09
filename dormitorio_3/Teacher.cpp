@@ -6,7 +6,7 @@ void Teacher::show_info()
         << "Contact No: +88" << cont_no << endl
         << "Emergency Contact No: +88" << emergency_no << endl
         << "Location: " << endl;
-        loc->print_Location();
+        //locprint_Location();
         cout << "Department: " << dept << endl
         << "Post: " << get_position() << endl
         << "Present: ";

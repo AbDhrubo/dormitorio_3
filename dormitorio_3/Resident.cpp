@@ -3,12 +3,7 @@
 
 int Resident::res = 0;
 
-//Resident::Resident(string _id, string& _name, string contact, string emerg)
-//{
-//
-//}
-
-Location* Resident::get_location()
+int Resident::get_location()
 {
     return loc;
 }
@@ -18,7 +13,7 @@ string Resident::get_dept()
     return dept;
 }
 
-void Resident::set_location(Location* _loc)
+void Resident::set_location(int _loc)
 {
     loc = _loc;
 }
@@ -61,6 +56,11 @@ void Resident::res_count()
 
 bool Resident::get_presence() {
     return present;
+}
+
+void Resident::set_presence(bool b)
+{
+    present = b;
 }
 
 

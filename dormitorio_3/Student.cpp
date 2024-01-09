@@ -3,7 +3,7 @@ int Student::student_count = 0;
 int Student::student_present = 0;
 int Student::student_on_leave = 0;
 
-Student::Student(int ID, string name, string contact_no, string dept, string emergency_no, Location* loc, int _year) :Resident(ID, name, contact_no, dept, emergency_no, loc), year(_year)
+Student::Student(int ID, string name, string contact_no, string dept, string emergency_no, int loc, int _year) :Resident(ID, name, contact_no, dept, emergency_no, loc), year(_year)
 {
     on_leave = false;
     has_visitor = false;
@@ -112,14 +112,25 @@ void Student::set_meet_notification(int m)
     else meet_notification = false;
 }
 
-void Student::show_info() {
+void Student::set_late_count(int l)
+{
+    late_count = l;
+}
+
+void Student::show_info()
+{
+    cout << "Call korbona" << endl;
+}
+
+void Student::show_student_info(vector <Location> &locco) 
+{
     cout << "ID: " << get_id() << endl;
     cout << "Name: " << get_name() << endl;
-    cout << "Year: " << get_year() << endl;
     cout << "Department: " << get_dept() << endl;
+    cout << "Semester: " << get_year() << endl;
     cout << "Contact No: +88" << get_cont() << endl;
     cout << "Emergency Contact No: +88" << get_emergencyno() << endl << "Location: ";
-    get_location()->print_Location();
+    locco[loc].print_Location();
     cout << "Presence: ";
     if (present) cout << "Yes" << endl;
     else cout << "No" << endl;

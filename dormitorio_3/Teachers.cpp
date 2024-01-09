@@ -1,6 +1,6 @@
 #include "Teachers.h"
 
-void Teachers::add_Teacher(int i, string n, string cn, string em_cn, string _dept, Location* loc, T_Position p) {
+void Teachers::add_Teacher(int i, string n, string cn, string em_cn, string _dept, int loc, T_Position p) {
 	Teacher t1 (i, n, cn, em_cn, _dept, loc, p);
 	arr.push_back(t1);
 	//delete &s1;
