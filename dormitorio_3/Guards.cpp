@@ -1,6 +1,6 @@
 #include "Guards.h"
 
-void Guards::add_Guard(int i, string n, string cn, int t, int d, int g) {
+void Guards::add_Guard(int i, string n, string cn, string t, int d, int g) {
 	Guard s1(i, n, cn, t, d, g);
 	arr.push_back(s1);
 	//delete &s1;

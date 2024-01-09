@@ -9,7 +9,7 @@ private:
 public:
 	/*students() {
 	}*/
-	void add_cleaner(int i, string n, string cn, int t, int d, int f, Block b);
+	void add_cleaner(int i, string n, string cn, string t, int d, int f, Block b);
 	int remove_cleaner(int ID);
 	//int cleaner_entry(int ID);
 	//void cleaner_exit(int ID);

@@ -7,7 +7,7 @@ private:
     int surv_hour;
 
 public:
-    Supervisor(int i, string n, string cn, int t, int d, int h) :Staff(i, n, cn, t, d), surv_hour(h) {}
+    Supervisor(int i, string n, string cn, string t, int d, int h) :Staff(i, n, cn, t, d), surv_hour(h) {}
 
     void set_surv_hour(int h)
     {

@@ -6,7 +6,7 @@ private:
     int gate_no;
 
 public:
-    Guard(int i, string n, string cn, int t, int d, int g) :Staff(i, n, cn, t, d), gate_no(g) {}
+    Guard(int i, string n, string cn, string t, int d, int g) :Staff(i, n, cn, t, d), gate_no(g) {}
 
     void set_gate_no(int g)
     {

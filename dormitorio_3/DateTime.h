@@ -1,34 +1,31 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <chrono>
+#include <sstream>
+#include<iomanip>
 
 using namespace std;
 
 class DateTime {
 public:
     DateTime(chrono::system_clock::time_point timePoint) : timePoint_(timePoint) {}
+    DateTime() {
 
-    void printDateTime() const {
-        time_t time = chrono::system_clock::to_time_t(timePoint_);
-        tm* tmInfo = localtime(&time);
-
-        cout << "Year: " << tmInfo->tm_year + 1900 << endl;
-        cout << "Month: " << tmInfo->tm_mon + 1 << endl;
-        cout << "Day: " << tmInfo->tm_mday << endl;
-        cout << "Hour: " << tmInfo->tm_hour << endl;
-        cout << "Minute: " << tmInfo->tm_min << endl;
-        cout << "Second: " << tmInfo->tm_sec << endl;
     }
 
-    static int calculateTimeDifferenceInMinutes(const DateTime& startTime, const DateTime& endTime) {
-        auto duration = chrono::duration_cast<chrono::minutes>(endTime.timePoint_ - startTime.timePoint_);
-        return duration.count();
-    }
+    DateTime(const string& timeStringHHMM);
 
-    static int calculateTimeDifferenceInDays(const DateTime& startTime, const DateTime& endTime) {
-        auto duration = chrono::duration_cast<chrono::hours>(endTime.timePoint_ - startTime.timePoint_);
-        return duration.count() / 24; // Convert hours to days
-    }
+    void printDateTime() const;
+
+    void printTime24() const;
+
+
+    static int timeDiffMinute(const DateTime& startTime, const DateTime& endTime);
+
+    static int timeDiffDay(const DateTime& startTime, const DateTime& endTime);
+
+    static DateTime calcEndTime(const DateTime& startTime, int durationMinutes);
 
 private:
     chrono::system_clock::time_point timePoint_;

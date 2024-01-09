@@ -63,4 +63,32 @@ bool Resident::get_presence() {
     return present;
 }
 
+void Resident::start_leave(int dur) {
+    try {
+        if (on_leave) throw 1;
+        DateTime temp(chrono::system_clock::now());
+        leave_started = temp;
+        on_leave = 1;
+        leave_duration = dur;
+        cout << "Congratulations. You are on leave for " << dur << " days." << endl;
+    }
+    catch (int n) {
+        cout << "You are already on leave." << endl;
+    }
+}
+
+void Resident::end_leave() {
+    try {
+        if (!present) throw 1;
+        DateTime temp(chrono::system_clock::now());
+        if (DateTime::timeDiffDay(leave_started, temp) > leave_duration) {
+            cout << "Supervisor dakse" << endl;
+        }
+        on_leave = 0;
+    }
+    catch (int n) {
+        cout << "You need to be present in order to perform this action." << endl;
+    }
+}
+
 

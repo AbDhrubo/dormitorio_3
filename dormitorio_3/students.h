@@ -15,5 +15,7 @@ public:
 	int student_entry(int ID);
 	void student_exit(int ID);
 	Student* find_student(int ID);
+	void initiate_leave(int ID, int dur);
+	void terminate_leave(int ID);
 };
 

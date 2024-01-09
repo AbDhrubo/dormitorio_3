@@ -1,5 +1,5 @@
 #include "Cleaners.h"
-void Cleaners::add_cleaner(int i, string n, string cn, int t, int d, int f, Block b) {
+void Cleaners::add_cleaner(int i, string n, string cn, string t, int d, int f, Block b) {
 	Cleaner s1(i, n, cn, t, d, f, b);
 	arr_cleaner.push_back(s1);
 	//delete& s1;

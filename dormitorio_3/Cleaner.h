@@ -12,7 +12,7 @@ private:
     Block block;
 
 public:
-    Cleaner(int i, string n, string cn, int t, int d, int f, Block b) :Staff(i, n, cn, t, d), floor(f), block(b) {}
+    Cleaner(int i, string n, string cn, string t, int d, int f, Block b) :Staff(i, n, cn, t, d), floor(f), block(b) {}
 
     void set_floor(int f)
     {

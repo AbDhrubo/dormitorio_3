@@ -51,4 +51,32 @@ Student* students::find_student(int ID) {
 		}
 	}
 	cout << "Not Found" << endl;
+	return nullptr;
+}
+
+void students::initiate_leave(int ID, int dur) {
+	try {
+		if (dur > 4 || dur <0) throw 1;
+		Student *temp = find_student(ID);
+		if (temp == nullptr) throw 2;
+		temp->start_leave(dur);
+	}
+	catch (int n) {
+		if (n == 1) {
+			cout << "Duration must be between 1 and 4" << endl
+				<< "Your duration: " << dur;
+		}
+		else cout << "Student not found" << endl;
+	}
+}
+
+void students::terminate_leave(int ID) {
+	try {
+		Student* temp = find_student(ID);
+		if (temp == nullptr) throw 1;
+		temp->end_leave();
+	}
+	catch (int n) {
+		cout << "Student not found" << endl;
+	}
 }

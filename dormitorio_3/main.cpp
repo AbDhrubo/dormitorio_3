@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
 #include <windows.h>
@@ -379,7 +380,7 @@ int main()
 	cooks c;
 	Position p = Position::Head;
 	Meal m = Meal::Breakfast;
-	c.add_cook(135, "Sad man", "012383", 700, 180, p, m);
+	c.add_cook(135, "Sad man", "012383", "7:30", 180, p, m);
 
 	//c.find_cook(135).show_info();
 	//c.find_cook(136).show_info();

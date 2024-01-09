@@ -1,6 +1,6 @@
 #include "cooks.h"
 
-void cooks::add_cook(int i, string n, string cn, int t, int d, Position p, Meal m)
+void cooks::add_cook(int i, string n, string cn, string t, int d, Position p, Meal m)
 {
 	Cook c1(i, n, cn, t, d, p, m);
 	arr.push_back(c1);
