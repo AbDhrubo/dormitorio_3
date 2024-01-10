@@ -135,9 +135,11 @@
     <ClCompile Include="Guard.cpp" />
     <ClCompile Include="Guards.cpp" />
     <ClCompile Include="Location.cpp" />
+    <ClCompile Include="Locations.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Resident.cpp" />
+    <ClCompile Include="ShowStaffInfo.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="students.cpp" />
@@ -146,6 +148,7 @@
     <ClCompile Include="Suppliers.cpp" />
     <ClCompile Include="Teacher.cpp" />
     <ClCompile Include="Teachers.cpp" />
+    <ClCompile Include="Update.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cleaner.h" />
@@ -156,9 +159,11 @@
     <ClInclude Include="Guard.h" />
     <ClInclude Include="Guards.h" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="Locations.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Resident.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ShowStaffInfo.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="students.h" />
@@ -167,6 +172,7 @@
     <ClInclude Include="Suppliers.h" />
     <ClInclude Include="Teacher.h" />
     <ClInclude Include="Teachers.h" />
+    <ClInclude Include="Update.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="dormitorio_3.rc" />

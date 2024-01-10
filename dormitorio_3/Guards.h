@@ -12,6 +12,13 @@ public:
 	int remove_Guard(int ID);
 	int Guard_entry(int ID);
 	void Guard_exit(int ID);
-	Guard find_Guard(int ID);
+	Guard* find_Guard(int ID);
+	void show_all_guards();
+	void show_present_guards();
+	void show_absent_gurds();
+	void show_shift_present();
+	void show_shift_absent();
+	void on_duty_updater();
+	void late_catcher();
 };
 

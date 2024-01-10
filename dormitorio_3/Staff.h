@@ -9,8 +9,13 @@ protected:
     bool on_duty = false;
     bool hall_presence = false;
 
+    //added later
+    unsigned int late_count;
+
 public:
-    Staff(int i, string n, string cn, string t, int d) :Person(i, n, cn), duty_time_starts(t), duration(d) {}
+    Staff(int i, string n, string cn, string t, int d) :Person(i, n, cn), duty_time_starts(t), duration(d) {
+        late_count = 0;
+    }
 
     void set_duty_time(string in)
     {
@@ -41,6 +46,14 @@ public:
         if (hall_presence) hall_presence = false;
         else hall_presence = true;
     }
-
+    bool get_presence() const{
+        return hall_presence;
+    }
+    void set_presence(bool i) {
+        hall_presence = i;
+    }
     void show_time();
+    void late_count_inc() {
+        late_count++;
+    }
 };

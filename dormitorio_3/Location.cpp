@@ -39,3 +39,6 @@ void Location::update_clean_status() {
 bool Location::get_clean_status() {
     return clean;
 }
+void Location::update_clean_status(bool i) {
+    clean = i;
+}

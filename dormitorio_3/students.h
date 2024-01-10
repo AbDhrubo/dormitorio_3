@@ -17,5 +17,8 @@ public:
 	Student* find_student(int ID);
 	void initiate_leave(int ID, int dur);
 	void terminate_leave(int ID);
+	void update_late();
+	void lates_reset();
+	void visitor_check();
 };
 

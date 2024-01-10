@@ -10,6 +10,9 @@ class Resident : public Person
 public:
     Resident(int _id, string& _name, string& _contact, string& _dept, string& _emerg, Location* _loc) : Person(_id, _name, _contact), dept(_dept), emergency_no(_emerg), loc(_loc) {
         present = 0;
+        leave_count = 0;
+        on_leave = 0;
+        leave_duration = 0;
     }
     void presence_updater();
     bool get_presence();

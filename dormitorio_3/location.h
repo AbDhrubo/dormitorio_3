@@ -15,6 +15,7 @@ public:
     bool get_clean_status();
     void print_Location();
     virtual ~Location();
+    void update_clean_status(bool i);
 
 protected:
 

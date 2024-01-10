@@ -135,3 +135,6 @@ void Student::show_info() {
     cout << "Late: " << late_count << " times" << endl << endl;
 }
 
+void Student::late_reset() {
+    late_count = 0;
+}

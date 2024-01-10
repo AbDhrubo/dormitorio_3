@@ -28,6 +28,7 @@ public:
     void increment_late_count();
     void set_meet_notification(int m);
     void show_info() override;
+    void late_reset();
 
     static int get_total_student_count()
     {

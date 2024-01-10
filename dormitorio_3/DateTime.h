@@ -27,6 +27,16 @@ public:
 
     static DateTime calcEndTime(const DateTime& startTime, int durationMinutes);
 
+    string getDate() const;
+
+    bool areDatesDifferent(const DateTime& other) const;
+
+    bool isMidnight() const;
+    bool isVisiting_hour() const;
+
+    bool areMonthsDifferent(const DateTime& other) const;
+    void updateDate(const DateTime& other);
+
 private:
     chrono::system_clock::time_point timePoint_;
 };

@@ -80,3 +80,24 @@ void students::terminate_leave(int ID) {
 		cout << "Student not found" << endl;
 	}
 }
+
+void students::update_late() {
+	for (int i = 0; i < arr.size(); i++){
+		if (!arr[i].get_presence() && !arr[i].get_on_leave()) {
+			arr[i].increment_late_count();
+		}
+	}
+}
+
+void students::lates_reset() {
+	for (int i = 0; i < arr.size(); i++) {
+		arr[i].late_reset();
+	}
+}
+
+void students::visitor_check() {
+	for (int i = 0; i < arr.size(); i++) {
+		if (arr[i].get_has_visitor()) arr[i].set_meet_notification(1);
+	}
+}
+
